@@ -25,6 +25,6 @@ public class ChangeType {
 		System.out.println("doubleValue: " + doubleValue);
 		
 
-	}
+	}//
 
 }

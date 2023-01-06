@@ -195,7 +195,8 @@ public class test01 {
 		//남은 펜 개수
 		int penLeft = pen%stu;
 		System.out.println(penLeft);
+	
 
-	}
+	}//main
 
 }

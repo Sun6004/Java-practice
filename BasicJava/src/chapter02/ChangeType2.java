@@ -15,6 +15,6 @@ public class ChangeType2 {
 		double doubleValue = 3.14;
 		intValue = (int) doubleValue;
 		System.out.println(intValue);
-	}
+	}//
 
-}
+}//
