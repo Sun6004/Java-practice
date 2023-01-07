@@ -10,7 +10,7 @@ public class StringEx {
 		
 		System.out.println(name);
 		System.out.println(job);
-		//이스케이프 문자 : \"\" , \t, \n = \r 
+		//이스케이프 문자 : \" \" , \t, \n = \r 
 		String str = "우리는 \"개발자\"입니다.";
 		System.out.println(str);
 		System.err.println("번호\t이름\t직업");
@@ -29,6 +29,6 @@ public class StringEx {
 		float var = 3.14f;
 		//부동소수점 공부하기
 		
-	}
+	}//
 
 }

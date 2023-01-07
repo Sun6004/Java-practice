@@ -4,7 +4,7 @@ public class BooleanTypeEx {
 
 	public static void main(String[] args) {
 		//논리 타입 연습
-		boolean stop = true;
+		boolean stop = false;
 		if(stop) {
 			System.out.println("중지합니다.");
 		}

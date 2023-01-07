@@ -15,6 +15,6 @@ public class Ex2 {
 			System.out.println("B");
 		}
 	
-	}
+	}//
 
 }
