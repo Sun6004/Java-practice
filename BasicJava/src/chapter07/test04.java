@@ -58,19 +58,27 @@ public class test04 {
 		
 		int sum2 = add (new int[] {83,90,87});
 		System.out.println("총합: "+sum2);
-		System.out.println();
-
-
-	}
+		//소수점 반올림
+		double avg2 = (double) sum2 /3;
+		System.out.println("평균: " + Math.round(avg2)); //첫째자리반올림
+		System.out.println("평균: " + Math.round(avg2 * 10) / 10.0);//둘째자리
+		System.out.println("평균: " + Math.ceil(avg2*100)/100.0);//올리기
+		System.out.println("첫째 자리 버림 : " + Math.floor(avg2)); //버리기
+		System.out.println("넷째 자리 버림 : " + Math.floor(avg2 * 1000) / 1000.0);
+			
+	
+		}
+	//총합을 계산해서 리턴하는 메소드
+	// add(new int)시 사용
 	public static int add(int[]scores) {
 		int sum3 = 0;
-		for(int i =0; i<3; i++) {
+		for (int i=0; i<3; i++) {
 			sum3 += scores[i];
 		}
 		return sum3;
-		
+	}
 
-		}
+	}
 	
 
-}
+

@@ -9,9 +9,11 @@ public class test03 {
 		// 반복문
 		// for(초기화식; 조건식; 증감식)
 		Random random = new Random();
-		for (int i = 1; i <= 8; i++) {
+		for (int i = 0; i <= 8; i++) {
 			System.out.println(i + "번째 값" + (random.nextInt(6) + 1));
 		}
+		
+		
 		// 1부터 100까지 합을 출력
 		int sum = 0;
 
@@ -28,11 +30,13 @@ public class test03 {
 			sum2 += i2;
 		}
 		System.out.println("1~" + (i2 - 1) + "합: " + sum2);
+		
 
 		// float타입 카운터변수
 		for (float x = 0.1f; x <= 1.0f; x += 0.1f) {
 			System.out.println(x);
 		}
+		
 
 		// 중첩for문을 이용한 구구단 출력
 		for (int m = 2; m <= 9; m++) {
