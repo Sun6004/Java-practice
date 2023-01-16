@@ -6,8 +6,10 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class test02 {
 
+	private static Random random;
+
 	public static void main(String[] args) {
-		Random random = null; //아직은 아무것도 참조하고싶지 않을때 null로 우선 초기화
+		random = null;
 		
 		//메모리 사용영역 
 		String a = "홍길동";//"홍길동"을 스택에 저장해두고 a가 그 주소값을 가짐
