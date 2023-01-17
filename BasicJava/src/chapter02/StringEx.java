@@ -15,7 +15,7 @@ public class StringEx {
 		System.out.println(str);
 		System.err.println("번호\t이름\t직업");
 		//println : 줄봐꿈해줌 print : 줄봐꿈 안함
-		System.out.print("행단위\r 출력");
+		System.out.print("행단위\n 출력");
 		
 		
 		int var1 = 10;

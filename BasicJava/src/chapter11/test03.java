@@ -16,19 +16,21 @@ public class test03 {
 		
 		
 	   System.out.print("가위 바위 보를 입력하세요: ");
-       String gammer = sc.nextLine();
+       String player = sc.nextLine();
             		
        System.out.println("인공지능 컴퓨터:" +array[ai]);
        
-       if(gammer.equals(array[ai])) {
+       if(player.equals(array[ai])) {
 			result = "무승부!";
-		}else if(gammer.equals("가위") && array[ai].equals("보")
-				|| gammer.equals("바위") && array[ai].equals("가위")
-				|| gammer.equals("보") && array[ai].equals("바위")) {
+		}else if(player.equals("가위") && array[ai].equals("보")
+				|| player.equals("바위") && array[ai].equals("가위")
+				|| player.equals("보") && array[ai].equals("바위")) {
 			result = "게이머승리";
 		}else {
 			result = "컴퓨터 승리";
 		}System.out.println("결과: " + result);  
+		
+		
 	
 	}
 }

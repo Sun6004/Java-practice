@@ -8,6 +8,7 @@ public class test02 {
 		
 		Random random = new Random();
 		int num[] = new int[6];
+		int temp;
 		
 		for(int i =0; i<6; i++) {
 			num[i] = random.nextInt((45)+1);
@@ -19,7 +20,9 @@ public class test02 {
 				}
 			}	
 		}
-		for(int i =0; i<6; i++) {
+		for(int i =0; i<num.length; i++) {
+			temp = num[i];
+					
 			System.out.println(num[i]);
 		}
 		
