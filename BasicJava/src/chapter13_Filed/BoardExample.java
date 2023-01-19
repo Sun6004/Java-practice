@@ -16,6 +16,6 @@ public class BoardExample {
 		
 		board4.info();
 		
-		System.out.println(board1.writer);
+		
 	}
 }
