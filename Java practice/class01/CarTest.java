@@ -46,12 +46,7 @@ public class CarTest {
 		}
 		System.out.println("현재 차의 속력: "+ yourcar.getSpeed()+"km/h");
 		
-		
-		
-		
-		
-		
-		
+			
 
 	}
 

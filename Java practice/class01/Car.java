@@ -36,5 +36,6 @@ public class Car {
 	}
 	public static double getMaxSpeed() {
 		return MAX_SPEED;
+		
 	}
 }
