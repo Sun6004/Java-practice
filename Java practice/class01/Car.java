@@ -5,6 +5,12 @@ public class Car {
 	private String color;
 	private static final double MAX_SPEED =200;
 	
+	private static double killoTomile(double distance) {
+		return distance / 1.6;
+	}
+	private static double mileTokillo(double distance) {
+		return 1.6 * distance;
+	}	
 	public Car() {
 	
 	}
@@ -13,10 +19,11 @@ public class Car {
 	}
 	
 	public double getSpeed() {
-		return speed;
+		return mileTokillo(speed);
 	}
 	public void setSpeed(double speed) {
-		this.speed = speed;
+		
+		this.speed = killoTomile(speed);
 	}
 	
 	public String getColor() {
@@ -27,15 +34,14 @@ public class Car {
 	}
 	public boolean speedUp(double speed) {
 			if( speed > 0 && speed < 200) {
-			this.speed += speed;
+			this.speed += killoTomile(speed);
 			return true;		
 	}else {
-		this.speed = 0;	
 		return false;
 		 }
 	}
 	public static double getMaxSpeed() {
-		return MAX_SPEED;
+		return mileTokillo(MAX_SPEED);
 		
 	}
 }
