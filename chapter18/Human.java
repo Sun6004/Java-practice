@@ -25,8 +25,8 @@ public class Human {
 		this.age = age;
 	}
 	
+	@Override
 	public String toString() {
-		return String.format("이름: "+name+", 나이: "+age);
-		
+		return "이름: " + getName() + ", 나이: " + getAge();
 	}
 }

@@ -16,10 +16,13 @@ public class Student extends Human{
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
+
+	@Override
 	public String toString() {
-		
-		return String.format("전공: " + major);
+		return super.toString() +", 전공: "+ major;
 	}
+	
+	
+	
 
 }
