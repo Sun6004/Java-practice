@@ -1,6 +1,6 @@
 package chapter18;
 
-public class Circle {
+public class Circle extends Shape{
 	private double radius;
 	
 	public Circle(double radius) {
@@ -12,5 +12,10 @@ public class Circle {
 	}
 	public double perimeter() {
 		return  radius*2*Math.PI;
+	}
+
+	@Override
+	public String toString() {
+		return "도형의 종류: 원, 둘레: " + (double)area() + ", 넓이: " +(double)perimeter();
 	}
 }
