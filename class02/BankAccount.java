@@ -1,30 +1,35 @@
 package class02;
 
 public class BankAccount {
-	private int blance;
-	
-		public BankAccount(int blance) {
-			this.blance=blance;
-		}
+	private int balance;
 
-		public int getBlance() {
-			return blance;
-		}
-		
-		//입금 메소드
-		public void deposit(int amoint) {
-			
-		}
-		//출금 메소드
-		public boolean withdraw(int amoint) {
+	public BankAccount(int balance) {
+		this.balance = balance;
+	}
+
+	public int getBalance() { 
+		return balance;
+	}
+
+	public void deposit(int amount) { 
+		balance += amount; 
+	}
+
+	public boolean withdraw(int amount) {
+		if (balance >= amount) {
+			balance -= amount; 
+			return true;
+		} else {
 			return false;
-			
-			
 		}
-		//현재 계좌에서 amount 만큼을 다른 계좌로 송금하는 메소드
-		public boolean transfer(int amount) {
+	}
+
+	public boolean transfer(int amount, BankAccount otherAccount) { 
+		if (withdraw(amount) == true) {
+			otherAccount.deposit(amount);
+			return true;
+		} else {
 			return false;
-			
 		}
-	
-}
+	}
+	}
