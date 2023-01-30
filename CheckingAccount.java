@@ -3,7 +3,6 @@ package class02_2;
 public class CheckingAccount extends BankAccount{
 	private SavingAccount protectedBy;
 
-
 	public CheckingAccount(int balance){
 		super(balance);
 	}
@@ -12,7 +11,6 @@ public class CheckingAccount extends BankAccount{
 		super(balance);
 		this.protectedBy = protectedBy;
 	}
-
 	
 	@Override
 	public boolean withdraw(int amount) {
@@ -26,6 +24,12 @@ public class CheckingAccount extends BankAccount{
 			super.withdraw(amount);
 			return true;
 		}
-
+		// if(super.withdraw(amount){
+		//	return true;
+		//  }else{
+		//	protectedBy.balance -= amount - balance;
+		//	balance = 0;
+		//}	return super.withfraw(amount);
+		//}
 	}
 }
