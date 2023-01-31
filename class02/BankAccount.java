@@ -1,35 +1,34 @@
 package class02;
 
-public class BankAccount {
-	private int balance;
+public abstract class BankAccount {
+	public abstract String getAccountType();
+	protected int balance;
 
 	public BankAccount(int balance) {
 		this.balance = balance;
 	}
-
-	public int getBalance() { 
+	public int getBalance() {
 		return balance;
 	}
-
-	public void deposit(int amount) { 
-		balance += amount; 
+	public void deposit(int amount) {
+		balance += amount;
 	}
-
 	public boolean withdraw(int amount) {
 		if (balance >= amount) {
-			balance -= amount; 
+			balance -= amount;
 			return true;
-		} else {
-			return false;
 		}
+		return false;
 	}
-
-	public boolean transfer(int amount, BankAccount otherAccount) { 
-		if (withdraw(amount) == true) {
+	public boolean transfer(int amount, BankAccount otherAccount) {
+		if (withdraw(amount)) {
 			otherAccount.deposit(amount);
 			return true;
-		} else {
-			return false;
 		}
+		return false;
+	}
+	@Override
+	public String toString() {
+		return String.format("%,d", balance);
 	}
 	}
