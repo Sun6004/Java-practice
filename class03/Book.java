@@ -9,8 +9,7 @@ public abstract class Book {
 	public Book(String title, String author) {
 		this.title = title;
 		this.author = author;
-		
-		//number = ++countOfBooks;(1부터 카운트)
+
 		number = countOfBooks;
 		countOfBooks++;
 	}

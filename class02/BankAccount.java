@@ -1,34 +1,41 @@
 package class02;
 
 public abstract class BankAccount {
-	public abstract String getAccountType();
-	protected int balance;
+	  protected int balance;
+	   
+	   public BankAccount(int balance){
+	      this.balance=balance;
+	   }
 
-	public BankAccount(int balance) {
-		this.balance = balance;
-	}
-	public int getBalance() {
-		return balance;
-	}
-	public void deposit(int amount) {
-		balance += amount;
-	}
-	public boolean withdraw(int amount) {
-		if (balance >= amount) {
-			balance -= amount;
-			return true;
-		}
-		return false;
-	}
-	public boolean transfer(int amount, BankAccount otherAccount) {
-		if (withdraw(amount)) {
-			otherAccount.deposit(amount);
-			return true;
-		}
-		return false;
-	}
-	@Override
-	public String toString() {
-		return String.format("%,d", balance);
-	}
+	   public abstract String getAccountType();
+
+	   public int getBalance() { 
+	      return this.balance;
+	   }
+	   public void deposit(int amount) {   
+	   }
+	    public boolean withdraw(int amount) {
+	       if(amount >= balance) {
+	          return false;
+	       }
+	       balance -= amount;
+	       return true;
+	    }
+	    
+
+	    public boolean transfer(int amount,BankAccount otherAccount) throws IllegalArgumentException{ 
+
+	       if(amount < 0||amount > balance){   
+	          throw new IllegalArgumentException();
+	       }
+
+	       this.balance -= amount;
+	      otherAccount.deposit(amount);
+	      return true;
+
+	    }
+
+	    public String toString() {
+	       return String.format("%,d ",balance);
+	    }
 	}
