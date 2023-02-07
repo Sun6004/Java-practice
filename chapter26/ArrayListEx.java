@@ -8,6 +8,7 @@ import java.util.LinkedList;
 public class ArrayListEx {
 	public static void main(String[] args) {
 		
+		
 		List<String> list = new ArrayList<>();
 		
 		list = new Vector<>();
