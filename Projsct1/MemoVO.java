@@ -1,6 +1,6 @@
 package Projsct1;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 //Vo: Value Object 값을 저장하는 객체
 //DTO: Data Transfer Object 저장된 값을 전달하는 객체
