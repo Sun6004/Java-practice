@@ -27,6 +27,7 @@ public class memoDAO {
 		Connection connection = DriverManager.getConnection(url,user,pw);
 		//객체생성
 		Statement statement = connection.createStatement();
+		//StringBuilder: 문자열을 더할때 사용
 		StringBuilder builder = new StringBuilder();
 	builder.append(" SELECT ");
 	builder.append(" 	M_NO, ");
@@ -62,10 +63,11 @@ public class memoDAO {
 		builder.append(" FROM ");
 		builder.append(" 	MEMO");
 		String sql = builder.toString();
-		//sql문을 전달하는 역할
+		//statement: sql문을 전달하는 역할
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1, searchNo);
-		//executeQuery: return값이 resultSet이면 true
+		//execute: return값이 resultSet이면 true
+		//executeQuery: ResultSet 객체에 결과값을 담음
 		ResultSet resultSet = statement.executeQuery();
 		memoVO memo = null;
 		if(resultSet.next()) {
@@ -106,7 +108,7 @@ public class memoDAO {
 		statement.setString(1, vo.getNo());
 		statement.setString(2, vo.getTitle());
 		statement.setString(3, vo.getContent());
-		
+		//executeUpdate: 수행결과로 Int 타입의 값을 반환, SELECT 구문을 제외한 다른 구문을 수행할 때 사용
 		int count = statement.executeUpdate();
 		statement.close();
 		connection.close();
