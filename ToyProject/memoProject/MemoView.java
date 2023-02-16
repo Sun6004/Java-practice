@@ -11,6 +11,9 @@ public class MemoView {
 	public static MemoView getInstance() {
 		return instance;
 	}
+	public void welcome() {
+		System.out.println("나의 메모");
+	}
 	public int mainMenu(Scanner scanner) {
 		System.out.println("-----------------------------");
 		System.out.println("1.목록|2.등록|3.수정|4.삭제|0.종료");
@@ -20,14 +23,13 @@ public class MemoView {
 	}
 	public memoVO insertMemo(Scanner scanner) {
 		System.out.println("새 메모 작성");
+		System.out.print("번호: ");
+		String no = scanner.nextLine();
 		System.out.print("제목: ");
 		String title = scanner.nextLine();
-		System.out.print("내용: ");
+		System.out.print("내용:  ");
 		String content = scanner.nextLine();
-		System.out.print("작성자: ");
-		String writer = scanner.nextLine();
-		return new memoVO(writer, title, content, writer);	
-	}
+		return new memoVO(0, title, content);
 	public void insertResult(int count) {
 		if(count > 0) {
 			System.out.println("메모가 정상 등록되었습니다.");

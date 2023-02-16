@@ -39,10 +39,10 @@ public class memoDAO {
 	ResultSet resultSet = statement.executeQuery(sql);
 	List<memoVO> list = new ArrayList<>();
 	while (resultSet.next()) {
-		String mNo = resultSet.getString("M_NO");
+		int mNo = resultSet.getInt("M_NO");
 		String mTitle = resultSet.getString("TITLE");
 		String mContent = resultSet.getString("CONTENT");
-		list.add(new memoVO(mNo, mTitle, mContent));
+		list.add(new memoVO(mTitle, mContent));
 		
 	}
 		resultSet.close();	     
@@ -84,7 +84,7 @@ public class memoDAO {
 	public int insertMemo(memoVO vo) throws Exception{
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "PRACTICE";
 		String pw = "java";
 		Connection connection = DriverManager.getConnection(url,user,pw);
@@ -98,13 +98,13 @@ public class memoDAO {
 		builder.append(" 	) ");
 		builder.append(" VALUES ");
 		builder.append(" 	( ");
-		builder.append(" 		seq_memo.NEXTVAL, ");
-		builder.append(" 		?");
-		builder.append(" 		?");
-		builder.append(" 		?");
+		builder.append(" 		?,");
+		builder.append(" 		?,");
+		builder.append(" 		? ");
 		builder.append(" 	)");
 		String sql = builder.toString();
 		PreparedStatement statement = connection.prepareStatement(sql);
+		
 		statement.setString(1, vo.getNo());
 		statement.setString(2, vo.getTitle());
 		statement.setString(3, vo.getContent());
@@ -134,6 +134,33 @@ public class memoDAO {
 		connection.close();
 		return count;
 	}
-
+	public int updateMemo(memoVO vo) throws Exception{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		String user = "PRACTICE";
+		String pw = "java";
+		Connection connection = DriverManager.getConnection(url,user,pw);
+		StringBuilder builder = new StringBuilder();
+		builder.append(" UPDATE ");
+		builder.append(" 	memo ");
+		builder.append("SET ");
+		builder.append("	title = ? ");
+		builder.append(" 	content = ? ");
+		builder.append(" 	writer = ? ");
+		builder.append(" WHERE ");
+		builder.append(" 	no = ?");
+		
+		String sql = builder.toString();
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, vo.getTitle());
+		statement.setString(2, vo.getContent());
+		statement.setString(3, vo.getWriter());
+		statement.setString(4, vo.getNo());
+		
+		int count = statement.executeUpdate();
+		statement.close();
+		connection.close();
+		return count;
+	}
 }
 

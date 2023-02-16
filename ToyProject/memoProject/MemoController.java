@@ -13,12 +13,12 @@ public class MemoController {
 	
 	private MemoService service = MemoService.getInstance();
 	public List<memoVO> selectMemos() throws Exception{
-		return service.selectMemo(searchNo);
+		return service.selevMemos();
 	}
 	public memoVO selecMemo(int searchNo)throws Exception{
 		return service.selectMemo(searchNo);
 	}
-	public int insertMemo(int searchNo)throws Exception{
+	public int insertMemo(memoVO vo)throws Exception{
 		return service.insertMemo(vo);
 	}
 	public int updateMemo(memoVO vo)throws Exception{

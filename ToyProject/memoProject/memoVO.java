@@ -5,25 +5,26 @@ import java.time.format.DateTimeFormatter;
 
 public class memoVO {
 
-	private String no;
+	private int no;
 	private String title;
 	private String content;
 	private String writer;
 	
 
-	public memoVO(String no, String title) {
+	public memoVO(int no, String title) {
 		super();
 		this.no = no;
 		this.title = title;
 	}
 
-	public memoVO(String no, String title, String content) {
+	public memoVO(int no, String title, String content) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.content = content;
 	}
-	public memoVO(String no, String title, String content, String writer) {
+
+	public memoVO(int no, String title, String content, String writer) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -31,11 +32,11 @@ public class memoVO {
 		this.writer = writer;
 	}
 
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
 
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 
