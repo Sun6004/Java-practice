@@ -75,6 +75,8 @@ public class BaseBallTest {
 			
 		}
 		break;
+	
 	}
+		sc.close();
 	}
 }
