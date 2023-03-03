@@ -14,7 +14,7 @@ public class ThreadTest04 {
 				new SumThread(5_00_000_000L, 1_000_000_000L),
 				new SumThread(1_000_000_000L, 100_000_000L),
 				new SumThread(1_000_000_000L, 2_000_000_000L),
-				new SumThread(1_500_000_000L, 1_000_000_000L),
+				new SumThread(1_500_000_000L, 1_000_000_000L)
 		};
 		
 		//단독으로 처리하기
