@@ -1,0 +1,17 @@
+package threadTest;
+
+public class ThreadTest01 {
+	public static void main(String[] args) {
+		//싱글 쓰레드 프로그렘
+		for (int i = 1; i <=200; i++) {
+			System.out.println("*");
+		}
+		
+		System.out.println();
+		System.out.println();
+		
+		for (int i = 1; i <=200; i++) {
+			System.out.println("$");
+		}
+	}
+}
