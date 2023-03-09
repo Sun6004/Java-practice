@@ -8,7 +8,7 @@
         <role>SAX 파싱담당</role>
     </person>
     
-    <person  name = "Member2">
+    <person name = "Member2">
         <age>25</age>
         <name>정재균</name>
         <gender>Male</gender>
