@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import util.DBUtil;
+import util.DBUtil3;
 
 /*
  *  회원을 관리하는 프로그램을 작성하시오 (myMember테이블 이용)
@@ -448,7 +449,7 @@ public class JdbcTest06 {
 	// 전체자료 출력
 	private static void serch() {
 		 try {
-		        con = DBUtil.getConnection();
+		        con = DBUtil3.getConnection();
 		        String sql = "select * from MYMEMBER";
 		        st = con.createStatement();
 		        rs = st.executeQuery(sql);
