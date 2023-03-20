@@ -466,7 +466,7 @@ public class JdbcTest06 {
 //		            System.out.println("비밀번호: " + rs.getString("MEM_PASS"));
 //		            System.out.println("이름: " + rs.getString("MEM_NAME"));
 //		            System.out.println("전화번호: " + rs.getString("MEM_TEL"));
-//		            System.out.println("주소: " + rs.getString("MEM_ADDR"));
+//		            System.out.println("주소: " + rs.getString("MEM_ADDR"));          
 		            String id2 = rs.getString("MEM_ID");
 		            String pw2 = rs.getString("MEM_PASS");
 		            String name2 = rs.getString("MEM_NAME");
