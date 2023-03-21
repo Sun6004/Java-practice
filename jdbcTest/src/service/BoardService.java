@@ -8,33 +8,52 @@ import vo.MemberVO;
 public interface BoardService {
 	
 	/**
-	 * 
-	 * @param boardVo insert할 데이터가 저장
-	 * @return 성공실패 1/0
+	 * BoardVO객체에 담겨진 자료를 DB에 insert하는 메서드
+	 * @param boardVo DB에 insert할 자료가 저장된 객체
+	 * @return 1/0
 	 */
 	public int insert(BoardVO boardVo);
 	
 	/**
-	 * 게시물 no를 매개변수로 받아서 해당 게시물을 삭제하는 메서드
-	 * 
-	 * @param no 삭제할 게시글no
-	 * @return 삭제성공 : 1, 삭제 실패 : 0
+	 * 게시글 번호를 매개변수로 받아서 해당 게시글 정보를 삭제하는 메서드
+	 * @param boardNo 삭제할 게시글 번호
+	 * @return 1/0
 	 */
-	public int delete(int no);
+	public int delete(int boardNo);
 	
 	/**
-	 *  update메서드
-	 * 
-	 * @param boardVo  update할 게시물 정보가 저장된 객체
-	 * @return 작업 성공 : 1, 작업 실패 : 0
+	 * 수정할 데이터가 저장된 BoardVO객체를 매개변수로 받아서 수정작업
+	 * @param boardVo 수정할 데이터가 저장될 BoardVO객체
+	 * @return 1/0
 	 */
 	public int update(BoardVO boardVo);
 	
+	
 	/**
-	 * DB의 전체 게시물을 가져와서 List에 담아서 반환하는 메서드
-	 * 
-	 * @return BoardVO 객체가 저장된 List객체
-	 * 
+	 * 게시글 번호를 매개변수로 받아서 해당 게시글 정보를 가져오는 메서드
+	 * @param boardNo 가져올 게시글 번호
+	 * @return 해방 게시글 자료가 있으면 해당 게시글 정보가 저장된 BoardVO객체,
+	 * 			자료가 없으면 null
 	 */
-	public List<BoardVO> getAllBoard();
+	public BoardVO getBoard(int boardNo);
+	
+	/**
+	 *  전체 게시글 정보를 가져와 List에 담아서 반환하는 메서드
+	 * @return BoardVO객체를 갖고 있는 List객체
+	 */
+	public List<BoardVO> getAllBoardList();
+	
+	/**
+	 *  게시글의 제목을 이용하여 게시글을 검색하는 메서드
+	 * @param title 검색할 게시글 제목
+	 * @return 검색된 결과가 저장된 List객체
+	 */
+	public List<BoardVO> getSearchBoardList(String title);
+	
+	/**
+	 *  게시글 번호를 매개변수로 받아서 해당 게시글의 조회수를 증가시키는 메서드
+	 * @param boardNo 조회수를 증가시킬 게시글의 번호
+	 * @return 작업성공1, 실패0
+	 */
+	public int serCountIncrement(int boardNo);
 }
