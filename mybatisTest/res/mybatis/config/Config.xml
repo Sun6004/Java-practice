@@ -11,9 +11,11 @@
 	<settings>
 	<!-- 데이터가 null로 전달되었으면 빈칸으로 인식하지 말고 null로 인식해라 -->
 		<setting name="jdbcTypeForNull" value="NULL"/>
-	</settings>
-	<!-- typeAlais 설정하기 -->
-	
+	</settings> 
+	<!-- typeAlais 설정하기 (VO여러개 설정가능)-->
+	<typeAliases>
+		<typeAlias type="basic.LprodVO" alias="lprodVo"/>
+	</typeAliases>
 	<!-- DB연결 설정하기 -->
 	<environments default="oracleEnv">
 		<environment id="oracleEnv">
@@ -26,5 +28,9 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<!--  DB에 사용되는 SQL문이 저장된 mapper파일 등록하는 부분 -->
+	<!--  DB에 사용되는 SQL문이 저장된 mapper파일 등록하는 부분 (여러개 등록가능) -->
+	<mappers>
+		<mapper resource="mybatis/mapper/lprod-mapper.xml"/>
+		<mapper resource="mybatis/mapper/jdbc-mapper.xml"/>
+	</mappers>
 </configuration>
