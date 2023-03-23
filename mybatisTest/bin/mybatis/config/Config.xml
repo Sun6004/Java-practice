@@ -15,6 +15,7 @@
 	<!-- typeAlais 설정하기 (VO여러개 설정가능)-->
 	<typeAliases>
 		<typeAlias type="basic.LprodVO" alias="lprodVo"/>
+		<typeAlias type="member.vo.MemberVO" alias="MemberVO"/>
 	</typeAliases>
 	<!-- DB연결 설정하기 -->
 	<environments default="oracleEnv">
@@ -32,5 +33,6 @@
 	<mappers>
 		<mapper resource="mybatis/mapper/lprod-mapper.xml"/>
 		<mapper resource="mybatis/mapper/jdbc-mapper.xml"/>
+		<mapper resource="mybatis/mapper/myMember-mapper.xml"/>
 	</mappers>
 </configuration>

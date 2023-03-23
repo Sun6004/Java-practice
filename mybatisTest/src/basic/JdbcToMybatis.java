@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import util.MybatisSqlsessionFactory;
+
 /*
  * LPROD 테이블에 새로운 데이터 추가하기
  * lprod_gu, lprod_nm은 직접 입력받아서 처리하고,
@@ -24,66 +26,75 @@ public class JdbcToMybatis {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		Reader rd = null;
-		SqlSessionFactory sqlSessionFactory = null;
+//		Reader rd = null;
+//		SqlSessionFactory sqlSessionFactory = null;
+//		SqlSession session = null;
+//		int id = 0;
+//		
+//		try {
+//			rd = Resources.getResourceAsReader("mybatis/config/Config.xml");
+//			
+//			sqlSessionFactory = new SqlSessionFactoryBuilder().build(rd);
+//		} catch (Exception e) {
+//			System.out.println("myBatis초기화 실패");
+//			e.printStackTrace();
+//		}finally {
+//			if(rd != null) {
+//				try {
+//					rd.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+			
+		// -----------------------------------------------------------------
+		//
 		SqlSession session = null;
-		int id = 0;
-		
 		try {
-			rd = Resources.getResourceAsReader("mybatis/config/Config.xml");
+			session = MybatisSqlsessionFactory.getSqlSession();
 			
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(rd);
-		} catch (Exception e) {
-			System.out.println("myBatis초기화 실패");
-			e.printStackTrace();
-		}finally {
-			if(rd != null) {
-				try {
-					rd.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+			//데이터 중 제일 큰값+1 구하기
+			int nextId = session.selectOne("jdbc.nextId");
+			
+			// LPROD_GU값을 입력 받고 중복되면 다시 입력받기
+			String gu;
+			int count = 0;
+			do {
+				System.out.print("상품 분류코드(gu) 입력: ");
+				gu = sc.next();
+				
+				count = session.selectOne("jdbc.lprodCount", gu);
+				
+				if(count > 0) {
+					System.out.println("입력한 상품코드 "+gu+" 는 이미 존재합니다");
+					System.out.println("다시 입력하세요");
+					System.out.println();
 				}
-			}
-		}
-		//select
-		try {
-			session = sqlSessionFactory.openSession();
+			} while(count > 0);
 			
-			List<LprodVO> list = session.selectList("lprod.selectAll");
-			id = list.size()+2;
+			System.out.print("상품 분류명(nm) 입력: ");
+			String nm = sc.next();
 			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		
-		System.out.println(id);
-		//insert
-		System.out.println("상품등록");
-		System.out.print("gu입력: ");
-		String gu = sc.next();
-		System.out.print("nm입력: ");
-		String nm = sc.next();
-		
-		try {
+			//입력값들을 Vo에 저장하기
 			LprodVO vo = new LprodVO();
-			vo.setLprod_id(id);
+			vo.setLprod_id(nextId);
 			vo.setLprod_gu(gu);
 			vo.setLprod_nm(nm);
 			
-			int cnt = session.insert("lprod.insertLprod", vo);
+			int cnt = session.insert("jdbc.insertLprod", vo);
 			
 			if(cnt > 0) {
-				System.out.println("추가 성공");
+				System.out.println("등록성공");
 			}else {
-				System.out.println("추가 실패");
+				System.out.println("등록실패");				
 			}
 			
-		} finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.commit();
 			session.close();
-			
 		}
 	}
 }
