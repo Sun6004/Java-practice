@@ -34,5 +34,6 @@
 		<mapper resource="mybatis/mapper/lprod-mapper.xml"/>
 		<mapper resource="mybatis/mapper/jdbc-mapper.xml"/>
 		<mapper resource="mybatis/mapper/myMember-mapper.xml"/>
+		<mapper resource="mybatis/mapper/board-mapper.xml"/>
 	</mappers>
 </configuration>
