@@ -17,31 +17,63 @@ public class RequestTest02 extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String num1 = request.getParameter("num1");
-		String num2 = request.getParameter("num2");
-		
-		int n1 = Integer.parseInt(num1);
-		int n2 = Integer.parseInt(num2);
-		
-		String[] calcs = request.getParameterValues("calc");
-		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+	
+		String n1 = request.getParameter("num1");
+		String n2 = request.getParameter("num2");
+		String calc = request.getParameter("calc");
 		
-		if(calcs != null) {
-			for (int i = 0; i < calcs.length; i++) {
-				String cal = calcs[i];
-				
+		int num1 = Integer.parseInt(n1);
+		int num2 = Integer.parseInt(n2);
+		try {
+			
+		double result = 0; //계산 결과가 저장될 변수
+		boolean r = true;
+		
+		switch (calc) {
+		case "+":
+			result = num1 + num2;
+			break;
+		case "-":
+			result = num1 - num2;	
+			break;
+		case "*":
+			if (num2 == 0) {
+				r = false;
+				break;
+			}else {
+			result = (double) num1 / num2;	
+			break;
 			}
-		}
-		PrintWriter out = response.getWriter();
+		case "/":
+			result = num1 / num2;		
+			break;
+		case "%":
+			result = num1 % num2;			
+			break;
+
+		default:
+			break;
+		}		
 		
-		
-		out.println("<html><head><meta charset='utf-8'> <title>Request객체 연습</title> </head>");
+		PrintWriter out = response.getWriter();	
+		if(r == true) {
+		out.println("<html><head><meta charset='utf-8'> <title>Request객체 연습2</title> </head>");
 		out.println("<body>");
-		out.println("<tr><td>계산</td>");
-		out.println("<td>");
-		out.println("</tr>");
+		out.println("<h2>계산결과</h2><hr>");
+		out.println(num1 + calc + num2 + "=" + result);
+		out.println("</body></html>");
+		}else {
+			out.println("<html><head><meta charset='utf-8'> <title>Request객체 연습2</title> </head>");
+			out.println("<body>");
+			out.println("<h2>계산결과</h2><hr>");
+			out.println("<p>계산실패</p>");
+			out.println("</body></html>");	
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

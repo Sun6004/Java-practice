@@ -18,11 +18,10 @@
 	-결과 예시
 	10/4 = 2.5
  -->
-<form action="/webTest/requestTest02.do" method="get">
+<form action="<%=request.getContextPath() %>/requestTest02.do" method="get">
 	<table border="1">
 		<tr>
 			<td><input type="text" size="10" name="num1">숫자1 입력</td>
-			<td><input type="text" size="10" name="num2">숫자2 입력</td>
 			<td>
 				<select name="calc">
 					<option value="+">+</option>
@@ -32,7 +31,7 @@
 					<option value="%">%</option>
 				</select>
 			</td>
-			<td><input type="text" size="10" name="">계산기 </td>
+			<td><input type="text" size="10" name="num2">숫자2 입력</td>
 			<td><input type="submit" value="계산하기"> </td>
 		</tr>
 	</table>
