@@ -1,4 +1,4 @@
-package session;
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,36 +6,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/sessionLogin.do")
-public class SessionLogin extends HttpServlet {
+
+@WebServlet("/fileUpload.do")
+public class FileUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("userPw");
-		
-		HttpSession session = request.getSession();
-		
-		if("admin".equals(userId) && "1234".equals(userPw)) { //로그인 성공
-			session.setAttribute("LOGINID", userId);
-		}
-		//sessionLogin.jsp로 이동하기
-		response.sendRedirect(request.getContextPath()+"/basic/session/sessionLogin.jsp");
-		
-		
-		
-		
-		
+		//파일 입력 폼을 보여주는 view페이지로 이동
+		request.getRequestDispatcher("/basic/json/fileUpload.jsp").forward(request, response);
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("파일 업로드 post방식~");
 	}
 
 }
