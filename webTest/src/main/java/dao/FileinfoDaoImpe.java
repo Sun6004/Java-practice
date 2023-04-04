@@ -22,10 +22,11 @@ public class FileinfoDaoImpe implements IFileInfoDao {
 		int cnt = 0; //반환값 저장
 		try {
 			session = MybatisSqlsessionFactory.getSqlSession();
-			cnt = session.insert("fileinfo.insertFileNo", vo);
+			cnt = session.insert("fileinfo.insertFileinfo", vo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			session.commit();
 			if(session != null) session.close();
 		}
 		
@@ -43,6 +44,7 @@ public class FileinfoDaoImpe implements IFileInfoDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			session.commit();
 			if(session != null) session.close();
 		}
 		return list;
@@ -59,6 +61,7 @@ public class FileinfoDaoImpe implements IFileInfoDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			session.commit();
 			if(session != null) session.close();
 		}
 		return vo;
