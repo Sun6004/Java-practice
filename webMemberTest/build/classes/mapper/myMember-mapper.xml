@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="myMember">
+	<select id="getMemberList" resultType="myMemberVo">
+		select * from MYMEMBER
+	</select>
+	
+	<insert id="insertMember" parameterType="myMemberVo">
+		insert into MYMEMBER
+		values (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_tel}, #{mem_addr}, #{mem_photo})
+	</insert>
+	
+	<select id="getMember" parameterType="String" resultType="myMemberVo">
+		select * from mymember where mem_id = #{mem_id}
+	</select>
+	
+	<update id="updateMember" parameterType="myMemberVo">
+		update mymember
+		    set mem_pass = #{mem_pass},
+		        mem_name = #{mem_name},
+		        mem_tel = #{mem_tel},
+		        mem_addr = #{mem_addr},
+		        mem_photo = #{mem_photo}
+		where mem_id = #{mem_id}
+	</update>
+	
+	<delete id="delMember" parameterType="String"> 
+		delete mymember
+			where mem_id = #{mem_id}
+	</delete>
+	
+	<select id="getPhoto" parameterType="int" resultType="myMemberVo">
+		select mem_photo from mymember where mem_id = #{mem_id}
+	</select>
+</mapper>
